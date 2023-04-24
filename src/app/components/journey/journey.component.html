@@ -1,0 +1,84 @@
+<!-- Form Search Journey -->
+<mat-card>
+  <mat-card-content>
+    <form [formGroup]="journeyForm" class="form-container" autocomplete="off">
+      <mat-form-field appearance="fill" class="mat-form-field">
+        <mat-label>write departureStation</mat-label>
+        <input matInput formControlName="departureStation" [(ngModel)]="departureValue" (keyup)="onDepartureKeyUp()">
+        <mat-error *ngIf="journeyForm.get('departureStation')?.errors">
+          {{ getErrorMessage(journeyForm.get('departureStation')?.errors) }}
+        </mat-error>
+      </mat-form-field>
+    
+      <mat-form-field appearance="fill" class="mat-form-field">
+        <mat-label>write arrivalStation</mat-label>
+        <input matInput formControlName="arrivalStation" [(ngModel)]="arrivalValue" (keyup)="onArrivalKeyUp()">
+        <mat-error *ngIf="journeyForm.get('arrivalStation')?.errors">
+          {{ getErrorMessage(journeyForm.get('arrivalStation')?.errors) }}
+        </mat-error>
+      </mat-form-field>
+    
+      <button mat-raised-button color="primary" (click)="getJourney()"  >
+        Search
+      </button>
+  </form>
+  </mat-card-content>
+</mat-card>
+
+  <mat-card>
+    <mat-card-content>
+     Total Price Journey : {{totalPriceJourney}} {{currencyDefault}}    
+     <mat-form-field appearance="fill" id="selCurrency">
+      <select matNativeControl [(ngModel)]="currencySelect">
+        <option value="">Select Currency</option>
+        <option value="COP">COP</option>
+        <option value="EUR">EUR</option>
+      </select>
+    </mat-form-field>
+    <button mat-raised-button color="accent" (click)="convertCurrency()" id="btConvert" >convert Currency</button> 
+    </mat-card-content>
+  </mat-card>
+  <mat-card>
+  <mat-card-content>
+    <mat-table [dataSource]="dataSource" id="ResultJourney">
+
+      <!-- Origin Column -->
+      <ng-container matColumnDef="origin">
+        <mat-header-cell *matHeaderCellDef> Origin </mat-header-cell>
+        <mat-cell *matCellDef="let flight"> {{flight.Origin}} </mat-cell>
+      </ng-container>
+    
+      <!-- Destination Column -->
+      <ng-container matColumnDef="destination">
+        <mat-header-cell *matHeaderCellDef> Destination </mat-header-cell>
+        <mat-cell *matCellDef="let flight"> {{flight.Destination}} </mat-cell>
+      </ng-container>
+    
+      <!-- Price Column -->
+      <ng-container matColumnDef="price">
+        <mat-header-cell *matHeaderCellDef> Price </mat-header-cell>
+        <mat-cell *matCellDef="let flight"> {{flight.Price}} {{currencyDefault}}</mat-cell>
+      </ng-container>
+    
+      <!-- Carrier Column -->
+      <ng-container matColumnDef="carrier">
+        <mat-header-cell *matHeaderCellDef> Carrier </mat-header-cell>
+        <mat-cell *matCellDef="let flight"> {{flight.Transport.FlightCarrier}} </mat-cell>
+      </ng-container>
+    
+      <!-- Flight Number Column -->
+      <ng-container matColumnDef="flightNumber">
+        <mat-header-cell *matHeaderCellDef> Flight Number </mat-header-cell>
+        <mat-cell *matCellDef="let flight"> {{flight.Transport.FlightNumber}} </mat-cell>
+      </ng-container>
+    
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+  </mat-card-content>
+</mat-card>
+
+
+
+
+  

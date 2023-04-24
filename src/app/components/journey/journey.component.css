@@ -1,0 +1,84 @@
+
+
+.items-form{
+    width: 100%;
+}
+
+.error{
+    color: red;
+}
+
+/* Estilos generales */
+.form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 50%;
+    background-color: #f2f2f2;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    padding: 30px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  }
+  
+  .mat-form-field {
+    width: 50%;
+    margin-bottom: 20px;
+  }
+  
+  mat-label {
+    font-weight: bold;
+    font-size: 18px;
+    color: #333;
+  }
+  
+  mat-error {
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
+  }
+  
+  input[type="text"] {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    width: 100%;
+    font-size: 16px;
+  }
+  
+  button[type="submit"] {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  button[type="submit"]:hover {
+    background-color: #0056b3;
+  }
+
+
+  #cardCurrency {
+    margin-left: 200px;
+    margin-right: 50px;
+  }
+
+  #btConvert {
+    margin-bottom: 20px;
+  }
+
+  #selCurrency{
+    margin-left: 10px;
+  }
+
+  
